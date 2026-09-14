@@ -1,0 +1,50 @@
+[
+  {
+    "id": "u001",
+    "name": "林小满",
+    "level": "新客",
+    "isNewCustomer": true,
+    "historicalOrderIds": ["o20260719001"],
+    "preferences": {
+      "flavors": ["酸甜", "微甜"],
+      "categories": ["dried_fruit", "nuts"],
+      "avoidAllergens": [],
+      "budgetRange": "50-100"
+    },
+    "tags": ["办公室零食", "偏酸甜", "价格敏感"],
+    "city": "杭州",
+    "riskNotes": []
+  },
+  {
+    "id": "u002",
+    "name": "周予安",
+    "level": "银卡",
+    "isNewCustomer": false,
+    "historicalOrderIds": ["o20260718007"],
+    "preferences": {
+      "flavors": ["麻辣", "咸香"],
+      "categories": ["meat_snack", "chips"],
+      "avoidAllergens": ["大豆"],
+      "budgetRange": "80-150"
+    },
+    "tags": ["追剧", "麻辣", "复购用户"],
+    "city": "成都",
+    "riskNotes": ["曾咨询过过敏原"]
+  },
+  {
+    "id": "u003",
+    "name": "陈沐",
+    "level": "金卡",
+    "isNewCustomer": false,
+    "historicalOrderIds": ["o20260717003"],
+    "preferences": {
+      "flavors": ["低甜", "可可", "豆乳"],
+      "categories": ["chocolate", "wafer"],
+      "avoidAllergens": ["花生"],
+      "budgetRange": "100-200"
+    },
+    "tags": ["控糖", "健身", "礼盒"],
+    "city": "上海",
+    "riskNotes": []
+  }
+]

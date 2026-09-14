@@ -1,0 +1,26 @@
+[
+  {
+    "id": "lg001",
+    "region": "华东",
+    "carrier": "顺丰/中通",
+    "estimatedDays": "1-2天",
+    "freeShippingThreshold": 69,
+    "notes": "高温天气会优先推荐常温稳定商品。"
+  },
+  {
+    "id": "lg002",
+    "region": "华南",
+    "carrier": "中通/圆通",
+    "estimatedDays": "2-3天",
+    "freeShippingThreshold": 69,
+    "notes": "果冻、巧克力类商品夏季建议提醒尽快签收。"
+  },
+  {
+    "id": "lg003",
+    "region": "西南",
+    "carrier": "中通/韵达/圆通",
+    "estimatedDays": "2-4天",
+    "freeShippingThreshold": 79,
+    "notes": "偏远地址以订单页实际时效为准。"
+  }
+]

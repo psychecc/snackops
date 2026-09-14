@@ -1,0 +1,9 @@
+{
+  "provider": "classroom-fixture",
+  "baseUrl": "",
+  "model": "snackops-fixture-v1",
+  "apiKeyEnv": "",
+  "timeoutMs": 12000,
+  "jsonMode": true,
+  "notes": "本地课堂演示稳定模式：不需要外部密钥，明确标识为 fixture，不伪装成真实模型。"
+}

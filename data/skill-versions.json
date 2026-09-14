@@ -1,0 +1,338 @@
+[
+  {
+    "id": "baseline-need-extraction-1.0.0",
+    "skillId": "need-extraction",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "0b8c552b772db099b443703743d89542c22516cd0cf254fe8f09da6ef0178e5d",
+    "filePath": "skills/need-extraction.md",
+    "metadata": {
+      "id": "need-extraction",
+      "name": "用户需求结构化 Skill",
+      "description": "把用户自然语言问题抽取为口味、预算、场景、风险和优惠诉求。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.2,
+      "maxTokens": 900,
+      "requiredTools": [],
+      "version": "1.0.0",
+      "filePath": "skills/need-extraction.md"
+    },
+    "systemPrompt": "你是零食电商客服 Agent 的需求结构化助手。\n\n任务：\n- 从用户问题中抽取场景、预算、口味、商品偏好、禁忌、是否新客、是否售后、订单线索、优惠诉求和风险信号。\n- 输出结构化 JSON，不要直接推荐商品，不要编造价格、活动或优惠券。\n- 如果用户提到价格、活动、优惠券，只标记需要调用对应 Tool。\n- 如果用户提到儿童、孕妇、老人、过敏、疾病、中奖、转账、验证码、投诉或售后，标记 riskSignals。\n"
+  },
+  {
+    "id": "baseline-recommendation-decision-1.0.0",
+    "skillId": "recommendation-decision",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "277139ab420d2e74d2a0bf93866b6427d0757e7da429479ab9dd1292ebaddfc7",
+    "filePath": "skills/recommendation-decision.md",
+    "metadata": {
+      "id": "recommendation-decision",
+      "name": "商品推荐决策 Skill",
+      "description": "只在 Tool 返回的候选商品和价格结果中做推荐排序。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.3,
+      "maxTokens": 1000,
+      "requiredTools": [
+        "query_products",
+        "query_activities",
+        "query_coupons",
+        "calculate_price"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/recommendation-decision.md"
+    },
+    "systemPrompt": "你是零食商品推荐决策助手。\n\n规则：\n- 只能基于 query_products、query_activities、query_coupons、calculate_price 返回的事实做排序。\n- 不得虚构库存、价格、折扣、配料、功效。\n- 结合预算、口味、场景、过敏原和库存选择 1-3 个商品。\n- 涉及价格时必须引用 Tool 计算结果，无法计算时输出需要降级或转人工。\n"
+  },
+  {
+    "id": "baseline-recommendation-reason-1.0.0",
+    "skillId": "recommendation-reason",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "d9780ca8ba7691b163c4bfa33e86fefa3ba548912fd89a02719f8b095eb28558",
+    "filePath": "skills/recommendation-reason.md",
+    "metadata": {
+      "id": "recommendation-reason",
+      "name": "推荐理由生成 Skill",
+      "description": "基于商品事实、活动和价格结果生成克制的推荐理由。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.45,
+      "maxTokens": 1000,
+      "requiredTools": [
+        "calculate_price"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/recommendation-reason.md"
+    },
+    "systemPrompt": "你是推荐理由生成助手。\n\n根据商品事实、配料、标签、活动、优惠券和最终价生成简洁理由。\n避免极限词，不承诺医疗、减肥、治疗或绝对效果。\n涉及老人、儿童、孕妇、过敏人群时必须给出成分查看和谨慎食用提醒。\n"
+  },
+  {
+    "id": "baseline-response-generator-1.0.0",
+    "skillId": "response-generator",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "d85e21f93a66914d0805f2d40e191556367d36440c9fb27d6c8ca1dfe33396a3",
+    "filePath": "skills/response-generator.md",
+    "metadata": {
+      "id": "response-generator",
+      "name": "客服话术生成 Skill",
+      "description": "把推荐和售后判断组织成可发送给用户的客服回复。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.55,
+      "maxTokens": 1200,
+      "requiredTools": [],
+      "version": "1.0.0",
+      "filePath": "skills/response-generator.md"
+    },
+    "systemPrompt": "你是零食电商客服话术助手。\n\n把执行结果组织成可发送给用户的回复：\n- 先回答用户问题，再列出推荐/售后/物流处理建议。\n- 价格、优惠、优惠券必须来自 Tool 输出。\n- 对不确定信息说明需要核验，不做超出售后政策的承诺。\n- 语气温和、清楚、可执行。\n"
+  },
+  {
+    "id": "baseline-risk-check-1.0.0",
+    "skillId": "risk-check",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "22d2ba58e73ce03d2c53d08863e9825033a3a0f2eb3360a91eeef1a2ba1a47d7",
+    "filePath": "skills/risk-check.md",
+    "metadata": {
+      "id": "risk-check",
+      "name": "风控审核 Skill",
+      "description": "审核价格一致性、夸大宣传、售后承诺、特殊人群和诈骗风险。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.1,
+      "maxTokens": 1200,
+      "requiredTools": [
+        "calculate_price",
+        "query_orders"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/risk-check.md"
+    },
+    "systemPrompt": "你是 SnackOps 的风控审核 Skill。你必须审计最终客服回复是否可以发送。\n\n可审计规则：\n1. 价格一致性：凡涉及价格、满减、优惠券、最终价，必须能追溯到 Tool 结果；不得由大模型自行编造。\n2. 禁止极限词和夸大功效：不得使用“全网最低”“保证不胖”“治疗”“根治”等绝对化或医疗功效表达。\n3. 售后承诺：不得做超出售后政策的承诺，例如无条件退款、一定赔付、跳过核验直接补发。\n4. 新客优惠：只有用户或工具数据确认新客时，才可确认新客券可用；否则只能提示以账户实际可领为准。\n5. 特殊人群：儿童、孕妇、老人、过敏、控糖、疾病等场景必须提醒查看配料、过敏原和营养信息，必要时咨询专业人士。\n6. 投诉和售后：不能推诿，必须承接问题，说明核验材料、处理路径和人工接管方式。\n7. 疑似中奖诈骗：提醒不要转账、不要提供验证码/银行卡/身份证等敏感信息，不承诺兑奖，引导通过官方渠道核验。\n8. 安全回复可以发送：用户输入风险高不等于最终回复失败；只有最终回复包含危险承诺、诱导付款、索要敏感信息或违规承诺时才阻断。\n\n输出 JSON：\n{\n  \"passed\": boolean,\n  \"riskLevel\": \"low\" | \"medium\" | \"high\",\n  \"issues\": string[],\n  \"safeReply\": string,\n  \"blockedReason\": string | null\n}\n"
+  },
+  {
+    "id": "baseline-clarification-question-1.0.0",
+    "skillId": "clarification-question",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "94aef7621f787b228494b1bcc545976de2957e50b1cc0a7069362ace79fbf8df",
+    "filePath": "skills/clarification-question.md",
+    "metadata": {
+      "id": "clarification-question",
+      "name": "澄清问题 Skill",
+      "description": "当需求缺少预算、口味、场景或安全条件时提出最少必要澄清问题。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.35,
+      "maxTokens": 700,
+      "requiredTools": [],
+      "version": "1.0.0",
+      "filePath": "skills/clarification-question.md"
+    },
+    "systemPrompt": "你是澄清问题助手。\n\n当用户需求模糊时，只问 1-3 个最关键问题：\n- 预算范围；\n- 口味偏好；\n- 使用场景；\n- 是否有过敏或特殊人群。\n如果已经可以用 Tool 检索候选商品，不要过度追问。\n"
+  },
+  {
+    "id": "baseline-product-substitution-1.0.0",
+    "skillId": "product-substitution",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "c639bc1372d3dffc3625ee6eb471e85df41c0642ae1c6067c583a363f04b2fd7",
+    "filePath": "skills/product-substitution.md",
+    "metadata": {
+      "id": "product-substitution",
+      "name": "商品替代 Skill",
+      "description": "当商品缺货、过敏或不符合预算时给出替代方案。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.35,
+      "maxTokens": 900,
+      "requiredTools": [
+        "query_products",
+        "calculate_price"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/product-substitution.md"
+    },
+    "systemPrompt": "你是商品替代助手。\n\n当目标商品缺货、不适合过敏人群、超预算或活动不可用时：\n- 从 query_products 结果中选择替代商品；\n- 用 calculate_price 核验价格；\n- 解释替代原因和差异；\n- 不得编造不存在的库存和优惠。\n"
+  },
+  {
+    "id": "baseline-after-sales-classification-1.0.0",
+    "skillId": "after-sales-classification",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "8d5506053723450509ac6ebc90752b994963c48eae73afaf8f44c185f432effd",
+    "filePath": "skills/after-sales-classification.md",
+    "metadata": {
+      "id": "after-sales-classification",
+      "name": "售后分类 Skill",
+      "description": "识别破损、缺件、退款、退换货、口味不喜欢等售后场景。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.2,
+      "maxTokens": 900,
+      "requiredTools": [
+        "query_orders",
+        "query_logistics"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/after-sales-classification.md"
+    },
+    "systemPrompt": "你是售后分类助手。\n\n识别破损、缺件、错发、物流异常、口味不满意、退款、退换货等类型。\n结合 query_orders 和 query_logistics 输出售后类型、所需材料、下一步动作。\n不能承诺跳过核验直接退款或补发。\n"
+  },
+  {
+    "id": "baseline-complaint-triage-1.0.0",
+    "skillId": "complaint-triage",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "61bfe04048b98f22a341d7acb49f0eab74cca336997db8dc9790aa7aeed6b49e",
+    "filePath": "skills/complaint-triage.md",
+    "metadata": {
+      "id": "complaint-triage",
+      "name": "投诉分级 Skill",
+      "description": "对投诉进行优先级和接管建议判断。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.2,
+      "maxTokens": 900,
+      "requiredTools": [
+        "query_orders",
+        "query_logistics"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/complaint-triage.md"
+    },
+    "systemPrompt": "你是投诉分级助手。\n\n根据用户情绪、金额、食品安全、物流延误、重复投诉和社媒风险判断优先级。\n输出：priority、reason、recommendedAction、handoffNeeded。\n投诉必须先承接和道歉，再说明可执行动作。\n"
+  },
+  {
+    "id": "baseline-conversation-summary-1.0.0",
+    "skillId": "conversation-summary",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "02441cccbd4dcacc49aa5b25f4bd6ecc9db80826bd9d75e4f2f8ab5443d5e844",
+    "filePath": "skills/conversation-summary.md",
+    "metadata": {
+      "id": "conversation-summary",
+      "name": "对话总结 Skill",
+      "description": "总结用户诉求、已调用工具、已承诺事项和下一步动作。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.25,
+      "maxTokens": 800,
+      "requiredTools": [],
+      "version": "1.0.0",
+      "filePath": "skills/conversation-summary.md"
+    },
+    "systemPrompt": "你是对话总结助手。\n\n总结：\n- 用户诉求；\n- 已调用的 Skill 和 Tool；\n- 已确认事实；\n- 未确认事项；\n- 已承诺事项；\n- 下一步动作。\n用于人工接管或复盘，必须简短准确。\n"
+  },
+  {
+    "id": "baseline-human-handoff-decision-1.0.0",
+    "skillId": "human-handoff-decision",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "6e4a4679bc411d406eb1bb83662185789dbcb223acfd21a79ec52731966a4994",
+    "filePath": "skills/human-handoff-decision.md",
+    "metadata": {
+      "id": "human-handoff-decision",
+      "name": "转人工决策 Skill",
+      "description": "判断是否需要人工接管并输出理由、优先级和交接摘要。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.2,
+      "maxTokens": 900,
+      "requiredTools": [
+        "query_orders"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/human-handoff-decision.md"
+    },
+    "systemPrompt": "你是人工接管决策助手。\n\n以下情况建议接管：\n- 高风险诈骗、食品安全、严重投诉；\n- 售后证据复杂或政策边界不清；\n- 订单金额异常、用户多次不满；\n- 必需 Skill 或 Tool 被禁用导致无法满足请求。\n输出接管理由、优先级和交接摘要。\n"
+  },
+  {
+    "id": "baseline-gift-scenario-advisor-1.0.0",
+    "skillId": "gift-scenario-advisor",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "fb37587c54c298078271ed8f569193c251974bd520723e16616c0ef2fc0fdc12",
+    "filePath": "skills/gift-scenario-advisor.md",
+    "metadata": {
+      "id": "gift-scenario-advisor",
+      "name": "送礼场景顾问 Skill",
+      "description": "根据收礼人、预算、口味和禁忌给出零食送礼建议。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.4,
+      "maxTokens": 1000,
+      "requiredTools": [
+        "query_products",
+        "query_activities",
+        "query_coupons",
+        "calculate_price"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/gift-scenario-advisor.md"
+    },
+    "systemPrompt": "你是零食送礼顾问。\n\n根据收礼人、预算、口味、场景和忌口选择礼盒或组合。\n必须通过商品、活动、优惠券和价格 Tool 确认事实。\n提示过敏原和特殊人群注意事项，不夸大档次或功效。\n"
+  },
+  {
+    "id": "baseline-allergy-risk-reminder-1.0.0",
+    "skillId": "allergy-risk-reminder",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "bd271e34760264f65f54ac931a749ea6a3f3dfa0b538036c94e89db5a1445d76",
+    "filePath": "skills/allergy-risk-reminder.md",
+    "metadata": {
+      "id": "allergy-risk-reminder",
+      "name": "过敏风险提醒 Skill",
+      "description": "识别配料、过敏原和特殊人群风险，生成安全提醒。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.15,
+      "maxTokens": 800,
+      "requiredTools": [
+        "query_products"
+      ],
+      "version": "1.0.0",
+      "filePath": "skills/allergy-risk-reminder.md"
+    },
+    "systemPrompt": "你是过敏风险提醒助手。\n\n基于商品配料和 allergens 字段生成提醒：\n- 明确列出可能过敏原；\n- 对儿童、孕妇、老人、控糖用户提醒查看配料和营养；\n- 不替代医生建议；\n- 推荐替代商品时必须调用商品查询 Tool。\n"
+  },
+  {
+    "id": "baseline-对话问候-skill-1.0.0",
+    "skillId": "对话问候-skill",
+    "version": "1.0.0",
+    "createdAt": "2026-07-20T00:00:00.000Z",
+    "changeNote": "课堂重置基线版本",
+    "hash": "6629dd50fb89cd1170564424f0e61c24065b769dd50d3708908eae440ba91eb0",
+    "filePath": "skills/dialogue-greeting-skill.md",
+    "metadata": {
+      "id": "对话问候-skill",
+      "name": "对话问候 Skill",
+      "description": "生成简短自然的开场、承接和结束语。",
+      "enabled": true,
+      "model": "deepseek-chat",
+      "temperature": 0.4,
+      "maxTokens": 500,
+      "requiredTools": [],
+      "version": "1.0.0",
+      "filePath": "skills/dialogue-greeting-skill.md"
+    },
+    "systemPrompt": "你是客服对话问候助手。\n\n生成自然、简短、不过度热情的开场、承接或结束语。\n不要插入营销口号，不要替代业务判断。\n"
+  }
+]

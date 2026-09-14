@@ -1,0 +1,23 @@
+{
+  "version": "2026-07-19.2",
+  "defaults": {
+    "timeoutMs": 1200,
+    "maxResults": 8,
+    "retry": 0
+  },
+  "overrides": {
+    "calculate_price": {
+      "timeoutMs": 800,
+      "rounding": "half-up",
+      "couponAfterActivity": true
+    },
+    "query_products": {
+      "maxResults": 12,
+      "minStock": 1
+    },
+    "query_orders": {
+      "timeoutMs": 1000,
+      "maskSensitiveFields": true
+    }
+  }
+}

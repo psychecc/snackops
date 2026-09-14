@@ -1,0 +1,38 @@
+[
+  {
+    "id": "t001",
+    "userId": "u002",
+    "title": "牛肉干是否含大豆",
+    "status": "pending",
+    "priority": "medium",
+    "createdAt": "2026-07-19T11:21:00+08:00",
+    "lastMessage": "用户询问麻辣牛肉干是否含大豆成分，需要客服确认配料表。",
+    "channel": "web",
+    "needsHuman": true,
+    "handoffReason": "涉及过敏原和配料确认"
+  },
+  {
+    "id": "t002",
+    "userId": "u001",
+    "title": "办公室零食组合推荐",
+    "status": "open",
+    "priority": "low",
+    "createdAt": "2026-07-19T13:08:00+08:00",
+    "lastMessage": "用户希望预算100元内搭配酸甜和健康零食。",
+    "channel": "web",
+    "needsHuman": false,
+    "handoffReason": ""
+  },
+  {
+    "id": "t003",
+    "userId": "u003",
+    "title": "签收后发现巧克力罐破损",
+    "status": "pending",
+    "priority": "high",
+    "createdAt": "2026-07-19T15:40:00+08:00",
+    "lastMessage": "用户提供照片，称外箱完好但内罐破损。",
+    "channel": "web",
+    "needsHuman": true,
+    "handoffReason": "破损售后需人工核实凭证"
+  }
+]

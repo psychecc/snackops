@@ -1,0 +1,142 @@
+[
+  {
+    "id": "query_products",
+    "name": "查询商品",
+    "description": "读取本地 products.json，并用代码执行库存、标签、口味、预算过滤。",
+    "enabled": true,
+    "owner": "SnackOps",
+    "implementation": "src/lib/tool-registry.ts#queryProducts",
+    "testEndpoint": "/api/tools/query_products/test",
+    "inputSchema": {
+      "query": "string?",
+      "category": "string?",
+      "flavor": "string?",
+      "tags": "string[]?",
+      "limit": "number?"
+    },
+    "outputSchema": {
+      "count": "number",
+      "products": "Product[]"
+    },
+    "testInput": {
+      "query": "酸甜",
+      "limit": 3
+    }
+  },
+  {
+    "id": "query_activities",
+    "name": "查询优惠活动",
+    "description": "读取本地 activities.json，返回候选商品可参与的满减活动。",
+    "enabled": true,
+    "owner": "SnackOps",
+    "implementation": "src/lib/tool-registry.ts#queryActivities",
+    "testEndpoint": "/api/tools/query_activities/test",
+    "inputSchema": {
+      "productIds": "string[]?",
+      "at": "ISO datetime?"
+    },
+    "outputSchema": {
+      "count": "number",
+      "activities": "Activity[]"
+    },
+    "testInput": {
+      "productIds": ["p001", "p002"]
+    }
+  },
+  {
+    "id": "query_coupons",
+    "name": "查询优惠券",
+    "description": "读取本地 coupons.json，按用户、商品和门槛返回可用券。",
+    "enabled": true,
+    "owner": "SnackOps",
+    "implementation": "src/lib/tool-registry.ts#queryCoupons",
+    "testEndpoint": "/api/tools/query_coupons/test",
+    "inputSchema": {
+      "userId": "string?",
+      "productIds": "string[]?",
+      "subtotal": "number?",
+      "at": "ISO datetime?"
+    },
+    "outputSchema": {
+      "count": "number",
+      "coupons": "Coupon[]"
+    },
+    "testInput": {
+      "userId": "u001",
+      "productIds": ["p001", "p002"],
+      "subtotal": 89
+    }
+  },
+  {
+    "id": "calculate_price",
+    "name": "计算价格",
+    "description": "用代码计算商品小计、活动满减、优惠券和最终价。",
+    "enabled": true,
+    "owner": "SnackOps",
+    "implementation": "src/lib/tool-registry.ts#calculatePrice",
+    "testEndpoint": "/api/tools/calculate_price/test",
+    "inputSchema": {
+      "productId": "string",
+      "quantity": "number?",
+      "userId": "string?",
+      "couponId": "string?",
+      "at": "ISO datetime?"
+    },
+    "outputSchema": {
+      "subtotal": "number",
+      "activity": "object|null",
+      "coupon": "object|null",
+      "userId": "string|null",
+      "newCustomerCouponEligible": "boolean",
+      "finalPrice": "number",
+      "savedAmount": "number"
+    },
+    "testInput": {
+      "productId": "p001",
+      "userId": "u001",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "query_orders",
+    "name": "查询订单",
+    "description": "读取本地 orders.json，按订单号或用户查询订单、物流和售后状态。",
+    "enabled": true,
+    "owner": "SnackOps",
+    "implementation": "src/lib/tool-registry.ts#queryOrders",
+    "testEndpoint": "/api/tools/query_orders/test",
+    "inputSchema": {
+      "orderId": "string?",
+      "orderNo": "string?",
+      "userId": "string?"
+    },
+    "outputSchema": {
+      "count": "number",
+      "orders": "Order[]"
+    },
+    "testInput": {
+      "userId": "u002"
+    }
+  },
+  {
+    "id": "query_logistics",
+    "name": "查询物流",
+    "description": "读取本地 logistics.json 和 orders.json，返回订单物流状态和区域时效。",
+    "enabled": true,
+    "owner": "SnackOps",
+    "implementation": "src/lib/tool-registry.ts#queryLogistics",
+    "testEndpoint": "/api/tools/query_logistics/test",
+    "inputSchema": {
+      "orderId": "string?",
+      "orderNo": "string?",
+      "region": "string?"
+    },
+    "outputSchema": {
+      "order": "object|null",
+      "regionRule": "object|null"
+    },
+    "testInput": {
+      "orderNo": "SO202607180007"
+    }
+  }
+]

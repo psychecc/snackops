@@ -1,0 +1,198 @@
+[
+  {
+    "id": "need-extraction",
+    "name": "用户需求结构化 Skill",
+    "description": "把用户自然语言问题抽取为口味、预算、场景、风险和优惠诉求。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.2,
+    "maxTokens": 900,
+    "requiredTools": [],
+    "version": "1.0.0",
+    "filePath": "skills/need-extraction.md"
+  },
+  {
+    "id": "recommendation-decision",
+    "name": "商品推荐决策 Skill",
+    "description": "只在 Tool 返回的候选商品和价格结果中做推荐排序。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.3,
+    "maxTokens": 1000,
+    "requiredTools": [
+      "query_products",
+      "query_activities",
+      "query_coupons",
+      "calculate_price"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/recommendation-decision.md"
+  },
+  {
+    "id": "recommendation-reason",
+    "name": "推荐理由生成 Skill",
+    "description": "基于商品事实、活动和价格结果生成克制的推荐理由。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.45,
+    "maxTokens": 1000,
+    "requiredTools": [
+      "calculate_price"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/recommendation-reason.md"
+  },
+  {
+    "id": "response-generator",
+    "name": "客服话术生成 Skill",
+    "description": "把推荐和售后判断组织成可发送给用户的客服回复。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.55,
+    "maxTokens": 1200,
+    "requiredTools": [],
+    "version": "1.0.0",
+    "filePath": "skills/response-generator.md"
+  },
+  {
+    "id": "risk-check",
+    "name": "风控审核 Skill",
+    "description": "审核价格一致性、夸大宣传、售后承诺、特殊人群和诈骗风险。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.1,
+    "maxTokens": 1200,
+    "requiredTools": [
+      "calculate_price",
+      "query_orders"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/risk-check.md"
+  },
+  {
+    "id": "clarification-question",
+    "name": "澄清问题 Skill",
+    "description": "当需求缺少预算、口味、场景或安全条件时提出最少必要澄清问题。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.35,
+    "maxTokens": 700,
+    "requiredTools": [],
+    "version": "1.0.0",
+    "filePath": "skills/clarification-question.md"
+  },
+  {
+    "id": "product-substitution",
+    "name": "商品替代 Skill",
+    "description": "当商品缺货、过敏或不符合预算时给出替代方案。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.35,
+    "maxTokens": 900,
+    "requiredTools": [
+      "query_products",
+      "calculate_price"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/product-substitution.md"
+  },
+  {
+    "id": "after-sales-classification",
+    "name": "售后分类 Skill",
+    "description": "识别破损、缺件、退款、退换货、口味不喜欢等售后场景。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.2,
+    "maxTokens": 900,
+    "requiredTools": [
+      "query_orders",
+      "query_logistics"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/after-sales-classification.md"
+  },
+  {
+    "id": "complaint-triage",
+    "name": "投诉分级 Skill",
+    "description": "对投诉进行优先级和接管建议判断。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.2,
+    "maxTokens": 900,
+    "requiredTools": [
+      "query_orders",
+      "query_logistics"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/complaint-triage.md"
+  },
+  {
+    "id": "conversation-summary",
+    "name": "对话总结 Skill",
+    "description": "总结用户诉求、已调用工具、已承诺事项和下一步动作。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.25,
+    "maxTokens": 800,
+    "requiredTools": [],
+    "version": "1.0.0",
+    "filePath": "skills/conversation-summary.md"
+  },
+  {
+    "id": "human-handoff-decision",
+    "name": "转人工决策 Skill",
+    "description": "判断是否需要人工接管并输出理由、优先级和交接摘要。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.2,
+    "maxTokens": 900,
+    "requiredTools": [
+      "query_orders"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/human-handoff-decision.md"
+  },
+  {
+    "id": "gift-scenario-advisor",
+    "name": "送礼场景顾问 Skill",
+    "description": "根据收礼人、预算、口味和禁忌给出零食送礼建议。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.4,
+    "maxTokens": 1000,
+    "requiredTools": [
+      "query_products",
+      "query_activities",
+      "query_coupons",
+      "calculate_price"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/gift-scenario-advisor.md"
+  },
+  {
+    "id": "allergy-risk-reminder",
+    "name": "过敏风险提醒 Skill",
+    "description": "识别配料、过敏原和特殊人群风险，生成安全提醒。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.15,
+    "maxTokens": 800,
+    "requiredTools": [
+      "query_products"
+    ],
+    "version": "1.0.0",
+    "filePath": "skills/allergy-risk-reminder.md"
+  },
+  {
+    "id": "对话问候-skill",
+    "name": "对话问候 Skill",
+    "description": "生成简短自然的开场、承接和结束语。",
+    "enabled": true,
+    "model": "deepseek-chat",
+    "temperature": 0.4,
+    "maxTokens": 500,
+    "requiredTools": [],
+    "version": "1.0.0",
+    "filePath": "skills/dialogue-greeting-skill.md"
+  }
+]

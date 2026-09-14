@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "mode": "local-fixture",
+  "reason": "未配置大模型 API Key 时，开发环境可使用本地确定性输出完成流程验收。",
+  "updatedAt": "2026-07-19T14:30:00+08:00"
+}

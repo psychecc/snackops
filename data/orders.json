@@ -1,0 +1,77 @@
+[
+  {
+    "id": "o20260719001",
+    "orderNo": "SO202607190001",
+    "userId": "u001",
+    "status": "paid",
+    "logisticsStatus": "待发货",
+    "afterSalesStatus": "无售后",
+    "trackingNo": "",
+    "carrier": "",
+    "shippingRegion": "华东",
+    "totalAmount": 83.8,
+    "createdAt": "2026-07-19T09:18:22+08:00",
+    "items": [
+      {
+        "productId": "p001",
+        "quantity": 1,
+        "paidAmount": 35.9
+      },
+      {
+        "productId": "p002",
+        "quantity": 2,
+        "paidAmount": 47.9
+      }
+    ]
+  },
+  {
+    "id": "o20260718007",
+    "orderNo": "SO202607180007",
+    "userId": "u002",
+    "status": "shipped",
+    "logisticsStatus": "运输中",
+    "afterSalesStatus": "配料咨询中",
+    "trackingNo": "YT73820012026",
+    "carrier": "圆通",
+    "shippingRegion": "西南",
+    "totalAmount": 102,
+    "createdAt": "2026-07-18T20:41:05+08:00",
+    "items": [
+      {
+        "productId": "p004",
+        "quantity": 2,
+        "paidAmount": 92
+      },
+      {
+        "productId": "p005",
+        "quantity": 1,
+        "paidAmount": 10
+      }
+    ]
+  },
+  {
+    "id": "o20260717003",
+    "orderNo": "SO202607170003",
+    "userId": "u003",
+    "status": "delivered",
+    "logisticsStatus": "已签收",
+    "afterSalesStatus": "破损补发处理中",
+    "trackingNo": "SF118830072026",
+    "carrier": "顺丰",
+    "shippingRegion": "华东",
+    "totalAmount": 119.6,
+    "createdAt": "2026-07-17T15:12:08+08:00",
+    "items": [
+      {
+        "productId": "p006",
+        "quantity": 2,
+        "paidAmount": 59.8
+      },
+      {
+        "productId": "p009",
+        "quantity": 2,
+        "paidAmount": 59.8
+      }
+    ]
+  }
+]

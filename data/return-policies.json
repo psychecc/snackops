@@ -1,0 +1,34 @@
+[
+  {
+    "id": "rp001",
+    "scene": "破损",
+    "policy": "用户提供外包装、面单和商品破损照片后，可按核实结果补发、退款或退差价。",
+    "refundRule": "破损责任明确时可进入退款或补发流程。",
+    "requiresManualReview": true,
+    "riskLevel": "medium"
+  },
+  {
+    "id": "rp002",
+    "scene": "缺件",
+    "policy": "核对订单明细、仓库称重和用户开箱照片，确认缺件后可补发缺失商品。",
+    "refundRule": "无法补发时可按缺失商品实付金额退款。",
+    "requiresManualReview": true,
+    "riskLevel": "medium"
+  },
+  {
+    "id": "rp003",
+    "scene": "未拆封退换货",
+    "policy": "签收后7天内未拆封且不影响二次销售，可按页面规则申请退货。",
+    "refundRule": "退款以订单实际支付金额和平台规则为准。",
+    "requiresManualReview": false,
+    "riskLevel": "low"
+  },
+  {
+    "id": "rp004",
+    "scene": "口味不喜欢",
+    "policy": "食品类商品因个人口味差异通常不支持无理由退货，可引导用户联系人工客服核实。",
+    "refundRule": "不得直接承诺退款。",
+    "requiresManualReview": true,
+    "riskLevel": "medium"
+  }
+]

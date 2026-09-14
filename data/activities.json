@@ -1,0 +1,43 @@
+[
+  {
+    "id": "a001",
+    "name": "全场满59减8",
+    "enabled": true,
+    "type": "threshold_reduction",
+    "scope": "all",
+    "minSpend": 59,
+    "discountAmount": 8,
+    "validFrom": "2026-07-01T00:00:00+08:00",
+    "validUntil": "2026-08-31T23:59:59+08:00",
+    "rule": "订单商品小计满59元减8元，可与一张优惠券叠加。",
+    "description": "全场商品订单金额满59元减8元"
+  },
+  {
+    "id": "a002",
+    "name": "健康零食满79减15",
+    "enabled": true,
+    "type": "threshold_reduction",
+    "scope": "category",
+    "categories": ["nuts", "dried_fruit", "energy_bar", "wafer"],
+    "minSpend": 79,
+    "discountAmount": 15,
+    "validFrom": "2026-07-10T00:00:00+08:00",
+    "validUntil": "2026-08-10T23:59:59+08:00",
+    "rule": "坚果、果干、能量棒、威化类商品满79元减15元。",
+    "description": "健康零食类商品满79元减15元"
+  },
+  {
+    "id": "a003",
+    "name": "追剧零食满69减9",
+    "enabled": true,
+    "type": "threshold_reduction",
+    "scope": "category",
+    "categories": ["chips", "meat_snack", "seaweed", "jelly"],
+    "minSpend": 69,
+    "discountAmount": 9,
+    "validFrom": "2026-07-15T00:00:00+08:00",
+    "validUntil": "2026-09-01T23:59:59+08:00",
+    "rule": "追剧分享类商品满69元减9元。",
+    "description": "追剧分享类商品满69元减9元"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "c001",
+    "name": "新客满49减6券",
+    "enabled": true,
+    "couponType": "new_customer",
+    "scope": "all",
+    "minSpend": 49,
+    "discountAmount": 6,
+    "validFrom": "2026-07-01T00:00:00+08:00",
+    "validUntil": "2026-12-31T23:59:59+08:00",
+    "rule": "仅新客可用，活动满减后金额满49元可抵扣。",
+    "description": "新客可用，全场满49元减6元"
+  },
+  {
+    "id": "c002",
+    "name": "健康零食满69减10券",
+    "enabled": true,
+    "couponType": "category",
+    "scope": "category",
+    "categories": ["nuts", "dried_fruit", "energy_bar", "wafer"],
+    "minSpend": 69,
+    "discountAmount": 10,
+    "validFrom": "2026-07-01T00:00:00+08:00",
+    "validUntil": "2026-08-31T23:59:59+08:00",
+    "rule": "健康零食分类活动满减后满69元可用。",
+    "description": "健康零食类满69元减10元"
+  },
+  {
+    "id": "c003",
+    "name": "追剧零食满59减7券",
+    "enabled": true,
+    "couponType": "category",
+    "scope": "category",
+    "categories": ["chips", "meat_snack", "seaweed", "jelly"],
+    "minSpend": 59,
+    "discountAmount": 7,
+    "validFrom": "2026-07-01T00:00:00+08:00",
+    "validUntil": "2026-08-31T23:59:59+08:00",
+    "rule": "追剧零食分类活动满减后满59元可用。",
+    "description": "追剧零食类满59元减7元"
+  },
+  {
+    "id": "c004",
+    "name": "海苔儿童零食券",
+    "enabled": true,
+    "couponType": "product",
+    "scope": "product",
+    "productIds": ["p005", "p007"],
+    "minSpend": 39,
+    "discountAmount": 5,
+    "validFrom": "2026-07-01T00:00:00+08:00",
+    "validUntil": "2026-09-30T23:59:59+08:00",
+    "rule": "海苔脆片、酸甜梅子冻活动满减后满39元可用。",
+    "description": "儿童零食指定商品满39元减5元"
+  }
+]
